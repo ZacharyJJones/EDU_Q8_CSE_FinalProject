@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "./App.css";
 import { useEffect, useState } from "react";
-import { makeJsonResponseIntoUsableMap } from "./misc/util.js";
+import { makeJsonResponseIntoUsableMap, fakeApiData } from "./misc/util.js";
 
 function App() {
 	const [currencyData, setCurrencyData] = useState(null);
@@ -11,12 +11,7 @@ function App() {
 		return () => {};
 	}, []);
 	const getApiData = async () => {
-		const response = await fetch(
-			"https://poe.ninja/api/data/currencyoverview?league=Standard&type=Currency"
-		);
-
-		const json = await response.json();
-		const dataMap = makeJsonResponseIntoUsableMap(json);
+		const dataMap = makeJsonResponseIntoUsableMap(fakeApiData);
 		setCurrencyData(dataMap);
 	};
 

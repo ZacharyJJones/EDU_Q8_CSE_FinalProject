@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# Zachary Jones' React Final Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application Purpose
 
-## Available Scripts
+This application addresses a factor of online-game economies that makes the experience worse: having to actually meet with and trade items to other people. All the inefficiencies of face-to-face communication with none of the urgency or politeness.
 
-In the project directory, you can run:
+Now with this mindblowing new technology, you can engage in faux-online trading with none of the negative side effects including but not limited to: increased blood pressure, sudden awareness of the passage of time.
 
-### `npm start`
+## How to run locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Firstly, you will need to install the node dependencies with `npm install`
+2. Secondly, you will need to start the json-server portion of the application. I included a shortcut for your convenience: enter `npm run start-json` in a terminal.
+3. Thirdly, you will need to start the react application itself in a secondary terminal. This is done by entering the command `npm start`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+With those steps completed, the application will launch in your web browser and you can begin selecting trades to complete.
 
-### `npm test`
+Your first step will need to be choosing "FIND TRADES" under the chaos orb. After that, you can pick from among the displayed trade options.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Once you have currency of other types, you can pick those to FIND TRADES for and exchange for other forms of currency.

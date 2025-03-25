@@ -12,8 +12,8 @@ export function TradeOptionsPanel({
 				{tradeOptions.map((x) => {
 					return (
 						<div className="trade-option" key={x.id}>
-							Pay {x.theyWantQuant}x<img src={nowTrading.icon} /> ... Get{" "}
-							{x.youReceiveQuant}x<img src={x.youReceive.icon} />
+							Pay {x.theyWantQuant}x<img src={nowTrading.icon} />
+							... Get {x.youReceiveQuant}x<img src={x.youReceive.icon} />
 							<button
 								disabled={nowTrading.quantity < x.theyWantQuant}
 								onClick={() => onClickConfirmTrade(x.id)}

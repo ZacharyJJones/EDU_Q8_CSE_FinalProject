@@ -6,9 +6,6 @@ export function CurrencyExchangePanel({
 	nowTrading,
 	setNowTrading,
 }) {
-	// console.log(ownedCurrency);
-	// console.log(typeof ownedCurrency);
-
 	return (
 		<div className="panel">
 			<h2>YOUR CURRENCIES</h2>

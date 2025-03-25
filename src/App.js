@@ -21,15 +21,14 @@ function App() {
 		setCurrencies(json);
 	};
 
-	// Setting trade options
+	// Had issues assigning trade options inside of the "setNowTrading"
+	// ... function, so I extracted the functionality and implemented with useEffect
 	useEffect(() => {
 		if (nowTrading === null) {
 			setTradeOptions([]);
 		} else {
 			const options = [];
-
-			// generate options
-			for (let i = 0; i < 6; i++) {
+			for (let i = 0; i < 9; i++) {
 				options.push(generateTradeOption(i));
 			}
 
@@ -55,7 +54,7 @@ function App() {
 		new_wasReceived.quantity += chosen.youReceiveQuant;
 		setCurrencies((prevState) => newCurrencies);
 
-		// remove trade from list. (generate one to replace it?
+		// replace selected trade with a new one
 		const newOptions = tradeOptions.slice().filter((x) => x.id !== tradeId);
 		newOptions.push(generateTradeOption(tradeId));
 
@@ -70,11 +69,12 @@ function App() {
 				Math.floor(Math.random() * nonTradingCurrencies.length)
 			];
 
+		// wish I had the time to make trades use the relative values of currencies
 		return {
 			id: tradeId,
-			theyWantQuant: 3,
+			theyWantQuant: Math.floor(1 + Math.random() * 3),
 			youReceive: randomNonTradingCurrency,
-			youReceiveQuant: 5,
+			youReceiveQuant: Math.floor(3 + Math.random() * 3),
 		};
 	}
 

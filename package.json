@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "set PORT=3006 && react-scripts start",
-    "start-json": "npx json-server ./src/misc/startingCurrency.json",
+    "start-json": "npx json-server ./src/misc/json-server.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

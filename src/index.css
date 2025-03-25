@@ -11,7 +11,23 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+.panel {
+	border-radius: 15px;
+	background-color: rgb(33, 26, 20);
+	color: rgb(202, 158, 103);
+
+	padding: 10px;
+	margin: 20px;
+}
+
+button {
+	background-color: rgb(53, 22, 5);
+	color: rgb(179, 132, 49);
+	border: 1px solid rgb(116, 61, 15);
+}
+
+button:disabled {
+	background-color: rgb(19, 8, 3);
+	color: rgb(77, 60, 33);
+	border: 1px solid rgb(75, 42, 15);
 }

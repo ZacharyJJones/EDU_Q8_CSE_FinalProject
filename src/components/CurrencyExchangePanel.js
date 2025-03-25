@@ -1,17 +1,32 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { useEffect, useState } from "react";
 import "./CurrencyExchangePanel.css";
-import { CurrencyItem } from "./CurrencyItem.js";
 
-export default function CurrencyExchangePanel({ currencyData, ownedCurrency }) {
+export function CurrencyExchangePanel({
+	currencyData,
+	nowTradingId,
+	setNowTrading,
+}) {
 	// console.log(ownedCurrency);
 	// console.log(typeof ownedCurrency);
 
 	return (
-		<div className="flex-container currency-panel">
-			{currencyData.map((x) => (
-				<CurrencyItem key={x.id} thisCurrencyData={x} />
-			))}
+		<div className="panel">
+			<h2>YOUR CURRENCIES</h2>
+			<div className="flex-container">
+				{currencyData.map((x) => (
+					<div key={x.id} className="currency-item">
+						<div>{x.name}</div>
+						<img src={x.icon} />
+						<div>Owned: {x.quantity}</div>
+						<button
+							disabled={x.quantity === 0 || x.id === nowTradingId}
+							onClick={() => setNowTrading(x.id)}
+						>
+							FIND TRADE
+						</button>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }

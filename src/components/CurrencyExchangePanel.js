@@ -1,26 +1,17 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react";
-export default function CurrencyExchangePanel({ currencyData }) {
-	return (
-		<div>
-			<span>I am really trying hard here</span>
+import "./CurrencyExchangePanel.css";
+import { CurrencyItem } from "./CurrencyItem.js";
 
-			<>
-				{currencyData &&
-					currencyData.map((x) => {
-						return (
-							<div key={x.id}>
-								id: {x.id}, name: {x.name}
-								<ul>
-									<li>Chaos Equiv: {x.chaosEquiv}</li>
-									<li>
-										<img src={x.icon} />
-									</li>
-								</ul>
-							</div>
-						);
-					})}
-			</>
+export default function CurrencyExchangePanel({ currencyData, ownedCurrency }) {
+	// console.log(ownedCurrency);
+	// console.log(typeof ownedCurrency);
+
+	return (
+		<div className="flex-container currency-panel">
+			{currencyData.map((x) => (
+				<CurrencyItem thisCurrencyData={x} />
+			))}
 		</div>
 	);
 }

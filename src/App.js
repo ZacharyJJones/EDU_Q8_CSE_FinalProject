@@ -4,7 +4,7 @@ import { currencyData } from "./misc/currencyData.js";
 import CurrencyExchangePanel from "./components/CurrencyExchangePanel.js";
 
 function App() {
-	const [currencyAmounts, setCurrencyAmounts] = useState([]);
+	const [ownedCurrency, setOwnedCurrency] = useState([]);
 
 	useEffect(() => {
 		fetchStartCurrencyQuantities();
@@ -13,13 +13,22 @@ function App() {
 	const fetchStartCurrencyQuantities = async () => {
 		const response = await fetch("http://localhost:3000/currencies");
 		const json = await response.json();
-		console.log(json);
+
+		for (let i = 0; i < json.length; i++) {
+			const element = json[i];
+
+			console.log(element);
+		}
+
+		setOwnedCurrency(json);
 	};
 
 	return (
 		<div>
-			HELLO WORLD!!!!
-			<CurrencyExchangePanel currencyData={currencyData} />
+			<CurrencyExchangePanel
+				currencyData={currencyData}
+				ownedCurrency={ownedCurrency}
+			/>
 		</div>
 	);
 }

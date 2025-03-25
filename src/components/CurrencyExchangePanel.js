@@ -10,7 +10,7 @@ export default function CurrencyExchangePanel({ currencyData, ownedCurrency }) {
 	return (
 		<div className="flex-container currency-panel">
 			{currencyData.map((x) => (
-				<CurrencyItem thisCurrencyData={x} />
+				<CurrencyItem key={x.id} thisCurrencyData={x} />
 			))}
 		</div>
 	);

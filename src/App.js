@@ -1,34 +1,26 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { currencyData } from "./misc/currencyData.js";
 import CurrencyExchangePanel from "./components/CurrencyExchangePanel.js";
 
 function App() {
-	const [ownedCurrency, setOwnedCurrency] = useState([]);
+	const [currencies, setCurrencies] = useState([]);
 
 	useEffect(() => {
-		fetchStartCurrencyQuantities();
+		getCurrencyData();
 		return () => {};
 	}, []);
-	const fetchStartCurrencyQuantities = async () => {
+	const getCurrencyData = async () => {
 		const response = await fetch("http://localhost:3000/currencies");
 		const json = await response.json();
 
-		for (let i = 0; i < json.length; i++) {
-			const element = json[i];
+		json.sort((a, b) => a.chaosEquiv > b.chaosEquiv);
 
-			console.log(element);
-		}
-
-		setOwnedCurrency(json);
+		setCurrencies(json);
 	};
 
 	return (
 		<div>
-			<CurrencyExchangePanel
-				currencyData={currencyData}
-				ownedCurrency={ownedCurrency}
-			/>
+			<CurrencyExchangePanel currencyData={currencies} />
 		</div>
 	);
 }

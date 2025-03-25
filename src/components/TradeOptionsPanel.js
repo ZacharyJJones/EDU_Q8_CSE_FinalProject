@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+import "./TradeOptionsPanel.css";
 export function TradeOptionsPanel({
 	tradeOptions,
 	nowTrading,
@@ -10,8 +11,15 @@ export function TradeOptionsPanel({
 			<div className="trades-grid">
 				{tradeOptions.map((x) => {
 					return (
-						<div key={x.id}>
-							{x.youReceive_quant}x<img src={x.youReceive.icon} />
+						<div className="trade-option" key={x.id}>
+							Pay {x.theyWantQuant}x<img src={nowTrading.icon} /> ... Get{" "}
+							{x.youReceiveQuant}x<img src={x.youReceive.icon} />
+							<button
+								disabled={nowTrading.quantity < x.theyWantQuant}
+								onClick={() => onClickConfirmTrade(x.id)}
+							>
+								ACCEPT
+							</button>
 						</div>
 					);
 				})}

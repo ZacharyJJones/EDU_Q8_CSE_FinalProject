@@ -19,10 +19,8 @@ export function CurrencyExchangePanel({
 						<img src={x.icon} />
 						<div>Owned: {x.quantity}</div>
 						<button
-							disabled={
-								x.quantity === 0 || (nowTrading && x.id === nowTrading.id)
-							}
-							onClick={() => setNowTrading(x.id)}
+							disabled={x.id === nowTrading?.id || x.quantity < 1}
+							onClick={() => setNowTrading(x)}
 						>
 							FIND TRADE
 						</button>

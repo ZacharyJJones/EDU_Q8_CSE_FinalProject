@@ -1,3 +1,21 @@
 .trades-grid {
 	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+
+	column-gap: 20px;
+	row-gap: 20px;
+
+	font-size: 200%;
+}
+
+.trade-option {
+	border: 1px solid rgb(116, 61, 15);
+	padding: 10px;
+}
+
+.trade-option > button {
+	align-self: auto;
+	font-size: 100%;
+	margin: 10px;
+	margin-top: 20px;
 }

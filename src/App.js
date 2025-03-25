@@ -29,7 +29,7 @@ function App() {
 			const options = [];
 
 			// generate options
-			for (let i = 0; i < 15; i++) {
+			for (let i = 0; i < 6; i++) {
 				options.push(generateTradeOption(i));
 			}
 
@@ -42,7 +42,20 @@ function App() {
 		setNowTrading(currencyId);
 	};
 	const onClickConfirmTrade = (tradeId) => {
-		// remove trade from list. (generate one to replace it?)
+		const chosen = tradeOptions.find((x) => x.id === tradeId);
+
+		const newCurrencies = currencies.slice();
+		const new_wasTraded = newCurrencies.find((x) => x.id === nowTrading.id);
+		const new_wasReceived = newCurrencies.find(
+			(x) => x.id === chosen.youReceive.id
+		);
+
+		// Apply effects of the trade
+		new_wasTraded.quantity -= chosen.theyWantQuant;
+		new_wasReceived.quantity += chosen.youReceiveQuant;
+		setCurrencies((prevState) => newCurrencies);
+
+		// remove trade from list. (generate one to replace it?
 		const newOptions = tradeOptions.slice().filter((x) => x.id !== tradeId);
 		newOptions.push(generateTradeOption(tradeId));
 
@@ -50,7 +63,7 @@ function App() {
 	};
 	function generateTradeOption(tradeId) {
 		const nonTradingCurrencies = currencies.filter(
-			(x) => x.id !== nowTrading.id
+			(x) => x.id !== nowTrading?.id
 		);
 		const randomNonTradingCurrency =
 			nonTradingCurrencies[
@@ -59,9 +72,9 @@ function App() {
 
 		return {
 			id: tradeId,
-			theyWantQuant: 4,
+			theyWantQuant: 3,
 			youReceive: randomNonTradingCurrency,
-			youReceive_quant: 5,
+			youReceiveQuant: 5,
 		};
 	}
 

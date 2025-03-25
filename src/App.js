@@ -5,8 +5,9 @@ import { TradeOptionsPanel } from "./components/TradeOptionsPanel.js";
 function App() {
 	const [currencies, setCurrencies] = useState([]);
 	const [tradeOptions, setTradeOptions] = useState([]);
-	const [nowTradingId, setNowTrading] = useState(null);
+	const [nowTrading, setNowTrading] = useState(null);
 
+	// Getting initial currency data
 	useEffect(() => {
 		getCurrencyData();
 		return () => {};
@@ -20,17 +21,25 @@ function App() {
 		setCurrencies(json);
 	};
 
+	// Setting trade options
+	useEffect(() => {
+		if (nowTrading === null) {
+			setTradeOptions([]);
+		} else {
+			const options = [];
+
+			// generate options
+			for (let i = 0; i < 15; i++) {
+				options.push(generateTradeOption(i));
+			}
+
+			setTradeOptions(options);
+		}
+		return () => {};
+	}, [nowTrading]);
+
 	const onClickSetTrade = (currencyId) => {
 		setNowTrading(currencyId);
-
-		const options = [];
-
-		// generate options
-		for (let i = 0; i < 15; i++) {
-			options.push(generateTradeOption(i, currencyId));
-		}
-
-		setTradeOptions(options);
 	};
 	const onClickConfirmTrade = (tradeId) => {
 		// remove trade from list. (generate one to replace it?)
@@ -39,26 +48,33 @@ function App() {
 
 		setTradeOptions((prevState) => newOptions);
 	};
-	const generateTradeOption = (tradeId) => {
+	function generateTradeOption(tradeId) {
+		const nonTradingCurrencies = currencies.filter(
+			(x) => x.id !== nowTrading.id
+		);
+		const randomNonTradingCurrency =
+			nonTradingCurrencies[
+				Math.floor(Math.random() * nonTradingCurrencies.length)
+			];
+
 		return {
 			id: tradeId,
-			theyWant_id: nowTradingId,
-			theyWant_quant: 4,
-			youReceive_id: 2,
+			theyWantQuant: 4,
+			youReceive: randomNonTradingCurrency,
 			youReceive_quant: 5,
 		};
-	};
+	}
 
 	return (
 		<div>
 			<CurrencyExchangePanel
 				currencyData={currencies}
-				nowTradingId={nowTradingId}
+				nowTrading={nowTrading}
 				setNowTrading={onClickSetTrade}
 			/>
 			<TradeOptionsPanel
 				tradeOptions={tradeOptions}
-				currencyData={currencies}
+				nowTrading={nowTrading}
 				onClickConfirmTrade={onClickConfirmTrade}
 			/>
 		</div>

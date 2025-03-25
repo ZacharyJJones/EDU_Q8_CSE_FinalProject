@@ -3,7 +3,7 @@ import "./CurrencyExchangePanel.css";
 
 export function CurrencyExchangePanel({
 	currencyData,
-	nowTradingId,
+	nowTrading,
 	setNowTrading,
 }) {
 	// console.log(ownedCurrency);
@@ -19,7 +19,9 @@ export function CurrencyExchangePanel({
 						<img src={x.icon} />
 						<div>Owned: {x.quantity}</div>
 						<button
-							disabled={x.quantity === 0 || x.id === nowTradingId}
+							disabled={
+								x.quantity === 0 || (nowTrading && x.id === nowTrading.id)
+							}
 							onClick={() => setNowTrading(x.id)}
 						>
 							FIND TRADE
